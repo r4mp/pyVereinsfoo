@@ -1,0 +1,45 @@
+{% load static  %}
+<!doctype html>
+<head>
+	<meta charset="utf-8">
+	<title>{% block title %}pyVereinsfoo ver. 0.0.1a{% endblock %}</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- Bootstrap -->
+	<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/css/bootstrap.min.css" rel="stylesheet" />       	<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet" />	
+	
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-theme.min.css">
+
+	<!-- jQuery -->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+	<!-- Ajax calls -->
+	<!-- TODO: static path dynamically  <script src="{% static "/js/ajax.js" %}"></script> -->
+	<script src="/static/js/ajax.js"></script>
+</head>
+<body>
+	<section class="container">
+		{% block toggle_login %}
+			{% include "userauth/toggle_login.html" %}
+		{% endblock %}
+
+		<h1>pyVereinsfoo</h1>
+
+		<h3>search</h3>
+		
+		<form class="well form-search">
+			{% csrf_token  %}
+			<input type="text" id="search" name="search" class="input-medium search-query" />
+		</form>
+
+		<ul id="search-results">
+		</ul>
+
+		{% block content %}{% endblock %}
+	</section>
+</body>
+</html>

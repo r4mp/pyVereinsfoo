@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}{{ block.super }} - all members{% endblock %}
+
+{% block content %}
+<h2>all members</h2>
+<ul>
+	{% for member in object_list %}
+	<li><a href="{{ member.get_absolute_url }}">{{ member.first_name }}</a></li>
+	{% endfor %}
+</ul>
+<a href="{% url 'members_member_create' %}">create member</a>
+{% endblock %}
