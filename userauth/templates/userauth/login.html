@@ -5,10 +5,13 @@
 {% block toggle_login %}{% endblock %}
 
 {% block content %}
-    <form action="{% url 'userauth_login' %}" method="post" accept-charset="utf-8">
-        {{ form.as_p }}
-        {% csrf_token %}
-        <input type="hidden" name="next" value="{{ next }}" />
-        <input type="submit" value="Login"/>
-    </form>
+	<div class="container">
+    		<form class="form-signin" action="{% url 'userauth_login' %}" method="post" accept-charset="utf-8">
+        		{{ form.as_p }}
+        		{% csrf_token %}
+        		<input type="hidden" name="next" value="{{ next }}" />
+        		<input class="btn btn-lg btn-primary btn-block" type="submit" value="Login"/>
+		</form>
+	</div>
 {% endblock %}
+

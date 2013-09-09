@@ -7,6 +7,9 @@ from django.utils.timezone import now
 class Address(models.Model):
     """Address model."""
     street = models.CharField(u'street', max_length=100)
+    zip_code = models.CharField(u'zip', max_length=10)
+    city = models.CharField(u'city', max_length=100)
+    country = models.CharField(u'country', max_length=100)
     date_created = models.DateTimeField(editable=False)
     date_updated = models.DateTimeField(editable=False)
     #slug = models.SlugField(unique=True)
@@ -17,7 +20,7 @@ class Address(models.Model):
         verbose_name_plural = u'Addresses'
 
     def __unicode__(self):
-        return self.street
+        return self.street + ", " + self.zip_code + " " + self.city
 
     def save(self, *args, **kwargs):
         if not self.id:
@@ -35,6 +38,7 @@ class Member(models.Model):
     date_updated = models.DateTimeField(editable=False)
     slug = models.SlugField(unique=True)
     created_by = models.CharField(u'username', max_length=100)
+    #client = models.OneToOneField(Client)
 
     class Meta:
         verbose_name = u'Member'

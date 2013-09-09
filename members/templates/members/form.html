@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 
 {% block title %}
-{{ block.super }} - {% if add %}create member
+{{ block.super }} - {% if create %}create member
     {% else %}"{{ object.title }}" edit{% endif %}
 {% endblock %}
 
 {% block content %}
-{% if add %}
+{% if create %}
 <h2>create member</h2>
-{% url members_member_create as action_url %}
+{% url 'members_member_create' as action_url %}
 {% else %}
 <h2>edit member "{{ object.title }}"</h2>
 {% url 'members_member_edit' object.pk as action_url %}

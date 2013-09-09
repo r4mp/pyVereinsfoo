@@ -3,7 +3,7 @@
 {% block title %}{{ block.super }} - {{ object.title }}{% endblock %}
 
 {% block content %}
-<h2>{{ object.title }}</h2>
+<h2>{{ object.first_name }} {{ object.last_name }}</h2>
 <!--<p>Ergibt {{ object.number_of_portions }} Portionen.</p>
 <h3>Zutaten</h3>
 {{ object.ingredients|linebreaks }}
@@ -11,6 +11,7 @@
 {{ object.preparation|linebreaks }}
 <p>Zubereitungszeit: {{ object.time_for_preparation }} Minuten</p>
 -->
+<a href="{% url 'members_member_edit' object.pk %}">edit member</a>
 <a href="{% url 'members_member_index' %}">back</a>
 {% endblock %}
 
